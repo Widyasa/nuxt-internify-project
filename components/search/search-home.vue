@@ -1,0 +1,70 @@
+<script setup lang="ts">
+import { ref } from "vue";
+
+const selectedCountry = ref();
+const countries = ref([
+  { name: 'Australia', code: 'AU' },
+  { name: 'Brazil', code: 'BR' },
+  { name: 'China', code: 'CN' },
+  { name: 'Egypt', code: 'EG' },
+  { name: 'France', code: 'FR' },
+  { name: 'Germany', code: 'DE' },
+  { name: 'India', code: 'IN' },
+  { name: 'Japan', code: 'JP' },
+  { name: 'Spain', code: 'ES' },
+  { name: 'United States', code: 'US' }
+]);
+</script>
+
+<template>
+<div class="flex flex-col w-full">
+  <div class="flex w-full gap-2">
+    <input-text class="rounded w-full py-2 pl-3 focus:outline-none" placeholder="cari lowongan..."/>
+    <button class="btn btn-secondary">
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.3798 20C19.2624 20 19.145 20 19.0276 20C18.827 19.858 18.6068 19.7405 18.4356 19.574C17.2173 18.3696 16.0088 17.1554 14.8003 15.9412C14.6829 15.8237 14.5704 15.6964 14.4627 15.5789C14.4236 15.5985 14.4138 15.5985 14.404 15.6082C14.3453 15.6523 14.2915 15.6964 14.2328 15.7404C12.7503 16.8959 11.0672 17.5226 9.19332 17.6058C7.27539 17.6891 5.50425 17.1995 3.91413 16.1223C1.87878 14.7368 0.616476 12.8224 0.151673 10.394C0.0880679 10.0561 0.0489266 9.71341 0 9.37559C0 8.99859 0 8.62159 0 8.2397C0.00978533 8.18095 0.0293558 8.12709 0.0342485 8.06834C0.107638 7.11851 0.332701 6.20295 0.714329 5.33635C2.44633 1.37545 6.6002 -0.720059 10.8177 0.224878C14.6095 1.07679 17.4766 4.5334 17.6136 8.43065C17.6723 10.1443 17.2907 11.7502 16.4198 13.2337C16.1751 13.6498 15.8816 14.0464 15.5978 14.4724C15.637 14.5066 15.6957 14.5507 15.7446 14.5997C16.9678 15.8188 18.186 17.0379 19.4043 18.2619C19.5462 18.4039 19.6979 18.541 19.8202 18.6977C20.1529 19.1138 20.0061 19.7013 19.5266 19.9315C19.4826 19.9461 19.4337 19.9755 19.3798 20ZM15.9892 8.79296C15.9745 4.82226 12.7356 1.59087 8.79701 1.62025C4.82417 1.64963 1.63415 4.84185 1.62926 8.80275C1.62436 12.7588 4.85842 15.9901 8.81169 15.9901C12.7699 15.9755 16.0039 12.7392 15.9892 8.79296Z" fill="white"/>
+      </svg>
+    </button>
+  </div>
+  <div class="flex gap-3">
+    <Dropdown v-model="selectedCountry" :options="countries" filter optionLabel="name" placeholder="semua lokasi" class="w-fit mt-4 text-sm md:w-14rem">
+      <template #value="slotProps">
+        <div v-if="slotProps.value" class="flex align-items-center">
+          <img :alt="slotProps.value.label" src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png" :class="`mr-2 flag flag-${slotProps.value.code.toLowerCase()}`" style="width: 18px" />
+          <div>{{ slotProps.value.name }}</div>
+        </div>
+        <span v-else>
+                    {{ slotProps.placeholder }}
+                </span>
+      </template>
+      <template #option="slotProps">
+        <div class="flex align-items-center">
+          <img :alt="slotProps.option.label" src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png" :class="`mr-2 flag flag-${slotProps.option.code.toLowerCase()}`" style="width: 18px" />
+          <div>{{ slotProps.option.name }}</div>
+        </div>
+      </template>
+    </Dropdown>
+    <Dropdown v-model="selectedCountry" :options="countries" filter optionLabel="name" placeholder="semua Kategori" class="w-fit mt-4 text-sm md:w-14rem">
+      <template #value="slotProps">
+        <div v-if="slotProps.value" class="flex align-items-center">
+          <img :alt="slotProps.value.label" src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png" :class="`mr-2 flag flag-${slotProps.value.code.toLowerCase()}`" style="width: 18px" />
+          <div>{{ slotProps.value.name }}</div>
+        </div>
+        <span v-else>
+                    {{ slotProps.placeholder }}
+                </span>
+      </template>
+      <template #option="slotProps">
+        <div class="flex align-items-center">
+          <img :alt="slotProps.option.label" src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png" :class="`mr-2 flag flag-${slotProps.option.code.toLowerCase()}`" style="width: 18px" />
+          <div>{{ slotProps.option.name }}</div>
+        </div>
+      </template>
+    </Dropdown>
+  </div>
+</div>
+</template>
+
+<style scoped>
+
+</style>

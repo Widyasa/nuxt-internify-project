@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .btn {
+        @apply px-5 py-2 rounded
+    }
+    .btn-primary {
+        @apply bg-primary text-white hover:brightness-110 duration-200
+    }
+    .btn-secondary {
+        @apply bg-secondary text-white hover:brightness-110 duration-200
+    }
+    .nav-link {
+        @apply opacity-80 duration-200 hover:opacity-100 font-medium
+    }
+    .btn-secondary-second {
+        @apply bg-white border border-secondary text-secondary duration-200 hover:bg-secondary hover:text-white
+    }
+}
