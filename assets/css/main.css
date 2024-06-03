@@ -15,6 +15,9 @@
     .nav-link {
         @apply opacity-80 duration-200 hover:opacity-100 font-medium
     }
+    .nav-link.active {
+        @apply text-primary
+    }
     .btn-secondary-second {
         @apply bg-white border border-secondary text-secondary duration-200 hover:bg-secondary hover:text-white
     }
