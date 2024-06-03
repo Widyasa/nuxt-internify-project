@@ -18,7 +18,7 @@ definePageMeta({
           />
       </div>
       <div class="col-span-6">
-
+        <resume-profile />
       </div>
     </div>
   </div>
